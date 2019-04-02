@@ -18,9 +18,11 @@ const posts = [
   {
     title: 'ReactJS + Apollo',
     description: 'Implement Apollo Client in ReactJS',
+    books:[]
   },{
     title: 'Apollo Server',
     description: 'Implement Apollo Server with NodeJS',
+    books: books
   },
 ];
 
@@ -39,13 +41,14 @@ const typeDefs = gql`
   type Post {
     title: String!
     description: String!
+    books: [Book]
   }
 
   # The "Query" type is the root of all GraphQL queries.
   # (A "Mutation" type will be covered later on.)
   type Query {
-    books: [Book]
-    posts: [Post]
+    listBooks(id: Int!): [Book]
+    listPosts: [Post]
   }
 `;
 
@@ -53,8 +56,11 @@ const typeDefs = gql`
 // schema.  We'll retrieve books from the "books" array above.
 const resolvers = {
   Query: {
-    books: () => books,
-    posts: () => posts,
+    listBooks: (parent, arguments) => {
+      console.table(arguments)
+      return books;
+    },
+    listPosts: () => posts,
   },
 };
 
