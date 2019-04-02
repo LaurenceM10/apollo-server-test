@@ -1,4 +1,10 @@
 # dependencies
 /node_modules
 
-.idea
+
+.idea/encodings.xml
+.idea/graphql-server-example.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
