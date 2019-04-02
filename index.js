@@ -14,6 +14,17 @@ const books = [
   },
 ];
 
+const posts = [
+  {
+    title: 'ReactJS + Apollo',
+    description: 'Implement Apollo Client in ReactJS',
+  },{
+    title: 'Apollo Server',
+    description: 'Implement Apollo Server with NodeJS',
+  },
+];
+
+
 // Type definitions define the "shape" of your data and specify
 // which ways the data can be fetched from the GraphQL server.
 const typeDefs = gql`
@@ -24,11 +35,17 @@ const typeDefs = gql`
     title: String
     author: String
   }
+  
+  type Post {
+    title: String!
+    description: String!
+  }
 
   # The "Query" type is the root of all GraphQL queries.
   # (A "Mutation" type will be covered later on.)
   type Query {
     books: [Book]
+    posts: [Post]
   }
 `;
 
@@ -37,6 +54,7 @@ const typeDefs = gql`
 const resolvers = {
   Query: {
     books: () => books,
+    posts: () => posts,
   },
 };
 
