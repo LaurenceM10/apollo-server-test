@@ -37,7 +37,7 @@ const typeDefs = gql`
     title: String
     author: String
   }
-  
+
   type Post {
     title: String!
     description: String!
@@ -74,3 +74,6 @@ const server = new ApolloServer({ typeDefs, resolvers });
 server.listen().then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
 });
+
+
+// Testing gitpod
